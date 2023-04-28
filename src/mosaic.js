@@ -1,6 +1,6 @@
-var blockSize = 15;
-var countWidth = 23;
-const countHeight = 33;
+var blockSize = 20;
+var countWidth = 16;
+const countHeight = 23;
 
 const width = blockSize * countWidth;
 const height = blockSize * countHeight;
@@ -18,7 +18,7 @@ function setup() {
   //background(0);
 
   reloadButton = createButton("Reload");
-  reloadButton.position(width / 2 - 75, height / 2 + 150);
+  reloadButton.position(width / 2 - 65, height / 2 + 150);
   reloadButton.addClass("btn");
   reloadButton.mousePressed(resetPatchwork);
 
