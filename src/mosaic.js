@@ -1,8 +1,6 @@
-var blockSize = 25;
+var blockSize = 15;
 var countWidth = 23;
 const countHeight = 33;
-// var wdt = blockSize * countBorder;
-// var hgt = blockSize * (countBorder + 8);
 
 const width = blockSize * countWidth;
 const height = blockSize * countHeight;
@@ -16,13 +14,19 @@ colors = [];
 
 function setup() {
   createCanvas(width, height);
-  rectMode(CENTER);
+  // background(0, 0, 0);
+  //background(0);
 
+  reloadButton = createButton("Reload");
+  reloadButton.position(width / 2 - 75, height / 2 + 150);
+  reloadButton.addClass("btn");
+  reloadButton.mousePressed(resetPatchwork);
+
+  rectMode(CENTER);
   noLoop();
 }
 
 function draw() {
-  background(25);
   for (var y = blockSize / 2; y < height; y += blockSize) {
     for (var x = blockSize / 2; x < width; x += blockSize) {
       queueNum = shuffleArray([0, 1]);
@@ -71,10 +75,6 @@ function shuffleArray(array) {
 
 function resetPatchwork() {
   redraw();
-}
-
-function mousePressed() {
-  resetPatchwork();
 }
 
 function keyPressed() {

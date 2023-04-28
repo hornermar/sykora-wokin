@@ -1,0 +1,53 @@
+@import url("https://fonts.googleapis.com/css?family=Press+Start+2P");
+
+.btn {
+  font-family: "Press Start 2P", cursive;
+  font-size: 16px;
+  width: 130px;
+  height: 50px;
+
+  /* background-color: rgb(90, 208, 90); */
+  background-color: aqua;
+
+  /* border-top: 1px rgb(90, 208, 90);
+  border-left: 1px rgb(90, 208, 90);
+  border-color: rgb(56, 180, 7); */
+
+  border-right: 4px solid rgb(2, 189, 189);
+  border-bottom: 6px solid rgb(2, 189, 189);
+
+  box-shadow: -3px 0 0 0 black, 3px 0 0 0 black, 0 -3px 0 0 black,
+    0 3px 0 0 black;
+}
+
+.btn:hover {
+  background-color: rgb(1, 230, 230);
+  /* 
+  border-top: 1px rgb(90, 208, 90);
+  border-left: 1px rgb(90, 208, 90); 
+  border-color: rgb(13, 227, 227); */
+
+  border-right: 6px solid rgb(2, 189, 189);
+  border-bottom: 8px solid rgb(2, 189, 189);
+}
+
+.btn:active {
+  background-color: rgb(1, 230, 230);
+  transform: translateY(2px);
+  width: 132px;
+  border-right: 4px solid rgb(2, 189, 189);
+  border-bottom: 5px solid rgb(2, 189, 189);
+}
+
+/* @media only screen and (max-width: 850px) {
+  .PixellButton {
+    background-color: rgb(90, 208, 90);
+
+    border-top: 1px rgb(90, 208, 90);
+    border-left: 1px rgb(90, 208, 90);
+
+    border-color: rgb(56, 180, 7);
+    border-right: 6px solid darkgreen;
+    border-bottom: 8px solid darkgreen;
+  }
+} */
