@@ -1,34 +1,21 @@
-var blockSize = 20;
-var countWidth = 16;
-const countHeight = 23;
-
-const width = blockSize * countWidth;
-const height = blockSize * countHeight;
-
 var queueNum = [0, 1];
 var clrs = ["#000000", "#FFFFFF"];
-
 let numbers = ["black", "white"];
 
 colors = [];
 
-function setup() {
-  createCanvas(width, height);
-  // background(0, 0, 0);
-  //background(0);
-
-  reloadButton = createButton("Reload");
-  reloadButton.position(width / 2 - 65, height / 2 + 150);
-  reloadButton.addClass("btn");
-  reloadButton.mousePressed(resetPatchwork);
-
-  rectMode(CENTER);
-  noLoop();
-}
-
-function draw() {
-  for (var y = blockSize / 2; y < height; y += blockSize) {
-    for (var x = blockSize / 2; x < width; x += blockSize) {
+function drawRandomMosaic() {
+  // for (let y = blockSize / 2; y < mosaic.height; y += blockSize)
+  for (
+    let y = windowHeight / 8;
+    y < windowHeight / 8 + mosaic.height;
+    y += blockSize
+  ) {
+    for (
+      let x = windowWidth / 2 - mosaic.width / 2 + blockSize / 2;
+      x < windowWidth / 2 + mosaic.width / 2 + blockSize / 2;
+      x += blockSize // )
+    ) {
       queueNum = shuffleArray([0, 1]);
 
       fill(clrs[queueNum[0]]);
@@ -47,17 +34,31 @@ function semiDual(x, y, clrs) {
   const randomNumber = random();
   rotate(radians(90 * Math.round(random(1, 5))));
 
-  fill(clrs[queueNum[1]]);
+  const semiCircle = selectSemiCircle(clrs[queueNum[1]]);
+  // fill(clrs[queueNum[1]]);
 
-  arc(x - blockSize / 2, y, blockSize, blockSize, radians(270), radians(450));
+  // arc(x - blockSize / 2, y, blockSize, blockSize, radians(270), radians(450));
+  image(semiCircle, x - blockSize / 2, y - blockSize / 2);
   if (randomNumber < 1 / 3) {
     // first option
-    arc(x + blockSize / 2, y, blockSize, blockSize, radians(90), radians(270));
+    //  arc(x + blockSize / 2, y, blockSize, blockSize, radians(90), radians(270));
+    image(semiCircle, x, y - blockSize / 2);
   } else if (randomNumber < (1 / 3) * 2) {
     // second option
   } else {
     // third option//
-    arc(x, y, blockSize, blockSize, radians(270), radians(450));
+    // arc(x, y, blockSize, blockSize, radians(270), radians(450));
+
+    rotate(radians(180));
+    image(semiCircle, x - blockSize / 2, y - blockSize / 2);
+  }
+}
+
+function selectSemiCircle(clrs) {
+  if (clrs === "#000000") {
+    return semiCircleBlack;
+  } else if (clrs === "#FFFFFF") {
+    return semiCircleWhite;
   }
 }
 
@@ -71,12 +72,4 @@ function shuffleArray(array) {
   }
 
   return array;
-}
-
-function resetPatchwork() {
-  redraw();
-}
-
-function keyPressed() {
-  resetPatchwork();
 }
